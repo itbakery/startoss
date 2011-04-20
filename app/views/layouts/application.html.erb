@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html  lang="en">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>StartOss ||= <%= @title %></title>
-  <%= stylesheet_link_tag "blueprint/print", :media => 'screen' %>
-  <%= stylesheet_link_tag "blueprint/screen", :media => 'print' %>
+  <%= stylesheet_link_tag "blueprint/print", :media => 'print' %>
+  <%= stylesheet_link_tag "blueprint/reset" %>
+  <%= stylesheet_link_tag "blueprint/screen", :media => 'screen,projection' %>
  <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
  <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -13,24 +15,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<div class="container showgrid">
-  <div class="span-24 last" id="header">
-    <div class="span-7" id="Logo"><h1>StartOss Logo</h1></div>
-    <div class="span-17 last" id="right-header">
-        <% if user_signed_in? %>
-          <%= link_to "settings", edit_user_registration_path %> |
-          <%= link_to "logout", destroy_user_session_path %>
-         <% else %>
-           <%= link_to "login", new_user_session_path %>
-         <% end %>
-     </div>
-  </div>
-
-
+<div class="container">
+  <%= render :partial => 'layouts/header' %>
+<section class="round support-body">
 <%= yield %>
+</section>
 
 
-  <div class="clear span-24 last" id="footer">Released under the MIT license</div>
+  <%= render :partial => 'layouts/footer' %>
 </div>
 </body>
 </html>

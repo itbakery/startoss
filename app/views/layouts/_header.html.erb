@@ -1,0 +1,12 @@
+<header >
+  <%=image_tag("logo.png", :alt=>"startoss", :class=>"round")%>
+  <nav class="round">
+      <% if user_signed_in? %>
+        <%= link_to "settings", edit_user_registration_path %> |
+        <%= link_to "logout", destroy_user_session_path %>
+       <% else %>
+         <%= link_to "login", new_user_session_path %>
+       <% end %>
+   </nav>
+</header>
+
